@@ -2,6 +2,11 @@ from flask import Flask, render_template_string, request, redirect, session, url
 import firebase_admin
 from firebase_admin import credentials, firestore
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # loads variables from .env
+
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # change in production
@@ -14,7 +19,7 @@ db = firestore.client()
 ADMIN_EMAIL = "shourikbanerjee@gmail.com"
 
 # Get your Firebase Web API Key from Project Settings → General → Web API Key
-API_KEY = "AIzaSyDPeBPAtFBDoMxTMdxadn0Y5DgZwtU5HUk"
+API_KEY = os.getenv("FIREBASE_API_KEY")
 
 # ---- HTML Templates ----
 login_template = """
