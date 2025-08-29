@@ -16,7 +16,7 @@ cred = credentials.Certificate("firebase-key.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-ADMIN_EMAIL = "shourikbanerjee@gmail.com"
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 
 # Get your Firebase Web API Key from Project Settings → General → Web API Key
 API_KEY = os.getenv("FIREBASE_API_KEY")
